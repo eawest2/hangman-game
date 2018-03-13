@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="Stylesheet" href= "assets/css/style.css">
+</head>
+<body class= "bg-dark text-light">
+
+    <container class= "container col-12">
+            <h1>HEADER</h1>
+        <div class= "container row">
+            <div class = "col-6">
+                <h3>IMAGES</h3>
+                <img src= "assets/images/placeholder.png">
+
+            </div>
+            <div class "col-6">
+                <h3>WORDS</h3>
+
+                <div class= "row">
+                    <span class = "col-12" id="dBox">0</span>
+                   
+                </div>
+                <section class= "row">
+                    <div class= "centered col-12" id= "badGuess">-</div>
+                </section>
+
+
+                
+            </div>
+        </div>
+
+
+    </container>
+
+
+    <script type= "text/javascript">
+
+
+        // Static Variable Storage
+              
+        var wordList = ["HALBERD", "MESSER", "FALCHION", "OAKSHOTT", "PARTISAN", "RANSEUR", "LUCERNE", "POLLAXE"];
+       
+        var defaultDisplayWord = [ "-", "-", "-", "-", "-", "-", "-", "-", "-", ];
+
+        // Changing Variable Storage
+
+        var keyPress = 0;
+
+        var activeWord = 0;
+
+        var pushChar = 0;
+
+        var keyCheck = 0;
+
+        var activeWordArray = [];
+
+        var activeDisplayWord = [];
+
+        var correctGuess = [];
+
+        var incorrectGuess = [];
+
+        // RNG
+
+        var rngNumber = Math.floor(Math.random() * 8);
+
+        //Start Functions
+
+        function start (arr) {
+            activeWord = wordList[rngNumber]
+
+            activeDisplayWord = defaultDisplayWord;
+
+                for (i = 0; i< activeWord.length ; i++) {
+                     pushChar = activeWord[i];
+                     console.log (pushChar);
+                     activeWordArray.push(pushChar); 
+
+                 
+                };
+            
+            document.getElementById("dBox").innerHTML = activeDisplayWord;
+            
+
+               
+
+                console.log (activeWordArray);
+                console.log (activeDisplayWord);
+
+
+        };
+
+
+        // Onclick Functions
+
+            document.onkeyup = function registerKey (){
+                keyPress = String.fromCharCode(event.which).toLowerCase();
+                wordCheck();
+                
+                
+
+            };
+
+        //Array pushing functions
+
+
+
+        //Array Check Functions
+            function wordCheck () {
+                
+                for (i = 0; i < activeWordArray.length; i++);
+                
+                    keyCheck = activeWordArray[i];
+                    console.log (keyCheck);
+
+                    // if (keyPress === keyCheck) {
+
+                    // }
+
+            }
+    
+
+
+        //WORKSPACE
+
+        // document.getElementById("demo").innerHTML = "Paragraph changed!"
+
+        start ();
+
+           
+        
+        
+    </script>
