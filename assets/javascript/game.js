@@ -16,7 +16,7 @@ var workingWord = " ";
 var workingWordArray = [];
 var workingWordArrayVerify = [];
 
-//number of incorrect guesses as an integer, guess state as a boolian, and guesses in an array
+//number of incorrect guesses as an integer, guess state as an integer, and guesses in an array
 var guessNum = 0;
 var guessState = 8;
 var guessArray = []
@@ -43,7 +43,7 @@ function clear () {
     workingWordArrayVerify = [];
     // Reset guessNum, guessState to 0, and guessArray to empty
     guessNum = 0;
-    guessState = 0;
+    guessState = 8;
     guessArray = []
     // Reset imageUpdate to default
     imgUpdate = "";
@@ -96,8 +96,7 @@ function wordCompute () {
      || keyPress === "T" || keyPress === "U" || keyPress === "V" || keyPress === "W" || keyPress === "X"
      || keyPress === "Y" || keyPress === "Z"){
         //Enable loss condition by storing value of old array
-        workingWordArrayVerify = [];
-        workingWordArrayVerify.push(workingWordArray)
+        workingWordArrayVerify = workingWordArray.slice()
         //Compare user input to selectedWord
         for (var i = 0; i<selectedWord.length; i++){
             var letter = selectedWord.charAt(i);                 
@@ -109,11 +108,12 @@ function wordCompute () {
                     document.getElementById("dBox").innerHTML = workingWord;                                
             };
 
-            console.log("Workingwordarray: " + workingWordArrayVerify.toString().replace(/,/g," "))
-            console.log("Workingword "+workingWordArray.toString().replace(/,/g," "))
+           
         };    
+        console.log("Workingwordarray: " + workingWordArray.join(''))
+            console.log("WorkingwordVerify "+workingWordArrayVerify.join(''))
         //compare workingWordArray to workingWordArrayVerif
-        if (workingWordArray.toString().replace(/,/g," ") === workingWordArrayVerify.toString().replace(/,/g," ")) {
+        if (workingWordArray.join('') === workingWordArrayVerify.join('') ){
             //If they are the same, add one to guesses.
             guessNum++
             guessState--
@@ -122,8 +122,7 @@ function wordCompute () {
             //run loss function
             loss();
             //Update workingWordArrayVerif
-            workingWordArrayVerify = [];
-            workingWordArrayVerify.push(workingWordArray)
+            workingWordArrayVerify = workingWordArray.slice();
             //Concatinate imageUpdate string
             imgUpdate = "assets/images/placeholder"+guessNum+".png";
             //show imageUpdate string in HTML
