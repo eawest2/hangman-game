@@ -110,10 +110,10 @@ function wordCompute () {
             };
         };    
         //compare workingWordArray to workingWordArrayVerif
-        if (workingWordArray == workingWordArrayVerify) {
+        if (workingWordArray === workingWordArrayVerify) {
             //If they are the same, add one to guesses.
             guessNum++
-               guessState--
+            guessState--
             console.log(guessNum);
             console.log(guessState);
             //Show remaining guesses in html
