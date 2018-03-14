@@ -6,25 +6,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="Stylesheet" href= "assets/css/style.css">
+  <link rel="Stylesheet" href= "assets/css/style.css">
 </head>
 <body class= "bg-dark text-light">
 
     <container class= "container col-12">
-            <h1>HEADER</h1>
+            <h1 class= "center">Medeival Weapon Hangman!</h1>
         <div class= "container row">
-                <h3>IMAGES</h3>
-            <div class = "col-6" id="imgNum">
-               <img src= "assets/images/placeholder0.png">
+                <h3>Don't murder stick dude!</h3>
+            <div class = "col-6 row">
+               <img class = "col-12" id= "imgNum" src= "assets/images/placeholder0.png">
 
             </div>
             <div class "col-6">
-                <h3>WORDS</h3>
+                <h3>Guess quick!</h3>
 
                 <div class= "row">
-                    <span class = "col-12" id="dBox">0</span>
+                    <span class= "col-2">Word:</span> <span class = "col-10" id="dBox">0</span>
                    
                 </div>
                 <section class= "row">
+                    <div class = "col-6"> Guesses remaining: <span  id= "guessNum">8</span></div>
                     <div class= "centered col-6"> Guessed Letters:  <div id= "guessBox">-</div> </div>
                     
                 </section>
@@ -38,144 +40,8 @@
 
     </container>
 
-
-    <script type= "text/javascript">
-
-
-        // Static Variable Storage
-              
-        var wordList = ["HALBERD", "MESSER", "FALCHION", "OAKSHOTT", "PARTISAN", "RANSEUR", "LUCERNE", "POLLAXE"];
-       
-        var defaultDisplayWordString = "          ";
-
-
-        // Changing Variable Storage
-
-        var keyPress = 0;
-
-        var activeWord = 0;
-
-        var pushChar = 0;
-
-        var keyCheck = 0;
-
-        var activeWordArray = [];
-
-        var activeDisplayWordArray = ["-","-","-","-","-","-","-","-","-"];
-
-        var activeDisplayWordString = 0;
-
-        var guessArray = [];
-
-        var guessNum = 0;
-
-        var imgNum = 0;
-
-        
-
-        // RNG
-
-        var rngNumber = Math.floor(Math.random() * 8);
-
-        //Start Functions
-
-        function start (arr) {
-            activeWord = wordList[rngNumber]
-
-            activeDisplayWordString = defaultDisplayWordString;
-
-                for (i = 0; i< activeWord.length ; i++) {
-                     pushChar = activeWord[i];
-                     console.log (pushChar);
-                     activeWordArray.push(pushChar);
-                     if ( activeDisplayWordArray.length > activeWordArray.length) {
-                         activeDisplayWordArray.pop();
-                    
-                        }
-
-                 
-                };
-
-                
-            
-            document.getElementById("dBox").innerHTML = activeDisplayWordString;
-            
-
-               
-
-                console.log (activeWordArray);
-                console.log (activeDisplayWordString);
-
-
-        };
-
-
-        // Onclick Functions
-
-            document.onkeyup = function registerKey (){
-                keyPress = String.fromCharCode(event.which).toUpperCase();
-                wordCheck();
-                
-                
-
-            };
-
-        //Array pushing functions
-
-
-
-        //Array Check Functions
-            function wordCheck () {
-                
-                if(    keyPress === "A" || keyPress === "B" || keyPress === "C" || keyPress === "D" || 
-                keyPress === "E" || keyPress === "F" || keyPress === "G" || keyPress === "H" || keyPress === "I"
-                || keyPress === "J" || keyPress === "K" || keyPress === "L" || keyPress === "M" || keyPress === "N" ||
-                 keyPress === "O" || keyPress === "P" || keyPress === "Q" || keyPress === "R" || keyPress === "S" 
-                 || keyPress === "T" || keyPress === "U" || keyPress === "V" || keyPress === "W" || keyPress === "X"
-                 || keyPress === "Y" || keyPress === "Z"){
-
-                    for (i = 0; i < activeWordArray.length; i++){
-                        if (keyPress === activeWordArray[i]) {
-                            activeDisplayWordArray[i] = keyPress;
-                            activeDisplayWordString = activeDisplayWordArray.toString();
-                            document.getElementById("dBox").innerHTML = activeDisplayWordString.replace(/,/g," ");
-                            document.getElementById("guessBox").innerHTML = guessArray.toString().replace(/,/g," ");                      
-                        };  
-                    }
-                        // else if (keyPress === correctGuessArray.some()) {
-                              
-                        // }
-                                          
-                    if ( activeWordArray.some(keyPressCheck) === false){
-                        guessNum++;
-                        imgNum++;
-                        
-                    };
-                    
-                                       
-                    console.log("Guess number: " + guessNum + "/8")
-                    console.log(activeDisplayWordArray);
-                    console.log(activeDisplayWordString);
-
-                    // document.getElementById("dBox").innerHTML = activeDisplayWordString;                 
-                       
-                }
-            }
-
-            function keyPressCheck (arr) {
-                return arr === keyPress;
-            }
+    <script src="assets/javascript/game.js"></script>
     
         
 
-
-        //WORKSPACE
-
-        // document.getElementById("demo").innerHTML = "Paragraph changed!"
-
-        start ();
-
-   </script>       
-        
-        
-    
+</body>
