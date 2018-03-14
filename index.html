@@ -12,9 +12,9 @@
     <container class= "container col-12">
             <h1>HEADER</h1>
         <div class= "container row">
-            <div class = "col-6">
                 <h3>IMAGES</h3>
-                <img src= "assets/images/placeholder.png">
+            <div class = "col-6" id="imgNum">
+               <img src= "assets/images/placeholder0.png">
 
             </div>
             <div class "col-6">
@@ -25,8 +25,10 @@
                    
                 </div>
                 <section class= "row">
-                    <div class= "centered col-12" id= "badGuess">-</div>
+                    <div class= "centered col-6"> Guessed Letters:  <div id= "guessBox">-</div> </div>
+                    
                 </section>
+                
 
 
                 
@@ -44,7 +46,7 @@
               
         var wordList = ["HALBERD", "MESSER", "FALCHION", "OAKSHOTT", "PARTISAN", "RANSEUR", "LUCERNE", "POLLAXE"];
        
-        var defaultDisplayWordString = "- - - - - - - - -";
+        var defaultDisplayWordString = "          ";
 
 
         // Changing Variable Storage
@@ -63,11 +65,13 @@
 
         var activeDisplayWordString = 0;
 
-        var correctGuessArray = [];
+        var guessArray = [];
 
-        var incorrectGuessArray = [];
+        var guessNum = 0;
 
-        var incorrectGuessNum = 0;
+        var imgNum = 0;
+
+        
 
         // RNG
 
@@ -123,30 +127,46 @@
         //Array Check Functions
             function wordCheck () {
                 
-                for (i = 0; i < activeWordArray.length; i++){
-                    if (keyPress === activeWordArray[i]) {
-                        activeDisplayWordArray[i] = keyPress;
-                        activeDisplayWordString = activeDisplayWordArray.toString();
-                        activeDisplayWordString.replace(/,/g," ");
-                        
-                        
+                if(    keyPress === "A" || keyPress === "B" || keyPress === "C" || keyPress === "D" || 
+                keyPress === "E" || keyPress === "F" || keyPress === "G" || keyPress === "H" || keyPress === "I"
+                || keyPress === "J" || keyPress === "K" || keyPress === "L" || keyPress === "M" || keyPress === "N" ||
+                 keyPress === "O" || keyPress === "P" || keyPress === "Q" || keyPress === "R" || keyPress === "S" 
+                 || keyPress === "T" || keyPress === "U" || keyPress === "V" || keyPress === "W" || keyPress === "X"
+                 || keyPress === "Y" || keyPress === "Z"){
+
+                    for (i = 0; i < activeWordArray.length; i++){
+                        if (keyPress === activeWordArray[i]) {
+                            activeDisplayWordArray[i] = keyPress;
+                            activeDisplayWordString = activeDisplayWordArray.toString();
+                            document.getElementById("dBox").innerHTML = activeDisplayWordString.replace(/,/g," ");
+                            document.getElementById("guessBox").innerHTML = guessArray.toString().replace(/,/g," ");                      
+                        };  
                     }
+                        // else if (keyPress === correctGuessArray.some()) {
+                              
+                        // }
+                                          
+                    if ( activeWordArray.some(keyPressCheck) === false){
+                        guessNum++;
+                        imgNum++;
+                        
+                    };
+                    
+                                       
+                    console.log("Guess number: " + guessNum + "/8")
+                    console.log(activeDisplayWordArray);
+                    console.log(activeDisplayWordString);
 
-                   
-                };
-                console.log(activeDisplayWordArray);
-                console.log(activeDisplayWordString);
+                    // document.getElementById("dBox").innerHTML = activeDisplayWordString;                 
+                       
+                }
+            }
 
-                // document.getElementById("dBox").innerHTML = activeDisplayWordString;
-
-
-                
-                    // if (keyPress === keyCheck) {
-
-                    // str+=testarray[i]+"%";
-
+            function keyPressCheck (arr) {
+                return arr === keyPress;
             }
     
+        
 
 
         //WORKSPACE
@@ -155,7 +175,7 @@
 
         start ();
 
-           
+   </script>       
         
         
-    </script>
+    
