@@ -126,14 +126,16 @@
                 for (i = 0; i < activeWordArray.length; i++){
                     if (keyPress === activeWordArray[i]) {
                         activeDisplayWordArray[i] = keyPress;
-                        activeDisplayWordString = activeDisplayWordArray.toString;
-                        activeDisplayWordString= activeDisplayWordString.replace (","," ");
+                        activeDisplayWordString = activeDisplayWordArray.toString();
+                        activeDisplayWordString.replace(/,/g," ");
+                        
                         
                     }
 
                    
                 };
                 console.log(activeDisplayWordArray);
+                console.log(activeDisplayWordString);
 
                 // document.getElementById("dBox").innerHTML = activeDisplayWordString;
 
