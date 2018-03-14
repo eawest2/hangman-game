@@ -10,37 +10,43 @@
 </head>
 <body class= "bg-dark text-light">
 
-    <container class= "container col-12 ">
+    <container class= "container">
             <h1 class= "m-4">Medeival Weapon Hangman!</h1>
-        <div class= "container row m-3 border border-2 border-white p-3">
+        <div class= "row m-3 border border-2 border-white p-3">
                 <h3>Don't murder stick dude!</h3>
-            <div class = "col-6 float-right">
-               <img class = "m-3 border border-rounded border-2 border-white" id= "imgNum" src= "assets/images/placeholder0.png">
+            <section class= "container row">
+                <div class = " row col-6 float-left">
+                <img class = "border border-rounded border-2 border-white" id= "imgNum" src= "assets/images/placeholder0.png">
 
-            </div>
-            <div class "col-4 margin-left margin-3">
-                <h3>Guess quick!</h3>
-                <hr>
-
-                <div class= "row">
-                    <span class= "col-2">Word:</span> <span class = "col-10" id="dBox">0</span>
-                    <hr>
-                   
                 </div>
-                <section class= "row">
-                    <div class = "col-6"> Guesses remaining: <span  id= "guessNum">8</span></div>
-                    <div class= "centered col-6"> Guessed Letters:  <div id= "guessBox">-</div> </div>
+                <div class "col-4 margin-left margin-3">
+                    <h3>Guess quick!</h3>
+                    <hr>
+
+                    <div class= "row">
+                        <span class= "col-2">Word:</span> <span class = "col-10" id="dBox">0</span>
+                        <hr>
                     
-                </section>
-                
+                    </div>
+                    <section class= "row">
+                        <div class = "col-6"> Guesses remaining: <span  id= "guessNum">8</span></div>
+                        <div class= "centered col-6"> Guessed Letters:  <div id= "guessBox">-</div> </div>
+                        
+                    </section>
+                    
 
 
-                
-            </div>
+                    
+                </div>
+            </section>
         </div>
 
 
     </container>
+
+    <nav class="navbar fixed-bottom navbar-dark bg-dark justify-content-center border-top border-white">
+            <a class="navbar-brand p-3" href="#">Copyright © Eric West 2018 </a>
+          </nav>
 
     <script src="assets/javascript/game.js"></script>
     
