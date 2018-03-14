@@ -44,7 +44,8 @@
               
         var wordList = ["HALBERD", "MESSER", "FALCHION", "OAKSHOTT", "PARTISAN", "RANSEUR", "LUCERNE", "POLLAXE"];
        
-        var defaultDisplayWord = [ "-", "-", "-", "-", "-", "-", "-", "-", "-", ];
+        var defaultDisplayWordString = "- - - - - - - - -";
+
 
         // Changing Variable Storage
 
@@ -58,11 +59,15 @@
 
         var activeWordArray = [];
 
-        var activeDisplayWord = [];
+        var activeDisplayWordArray = ["-","-","-","-","-","-","-","-","-"];
 
-        var correctGuess = [];
+        var activeDisplayWordString = 0;
 
-        var incorrectGuess = [];
+        var correctGuessArray = [];
+
+        var incorrectGuessArray = [];
+
+        var incorrectGuessNum = 0;
 
         // RNG
 
@@ -73,23 +78,29 @@
         function start (arr) {
             activeWord = wordList[rngNumber]
 
-            activeDisplayWord = defaultDisplayWord;
+            activeDisplayWordString = defaultDisplayWordString;
 
                 for (i = 0; i< activeWord.length ; i++) {
                      pushChar = activeWord[i];
                      console.log (pushChar);
-                     activeWordArray.push(pushChar); 
+                     activeWordArray.push(pushChar);
+                     if ( activeDisplayWordArray.length > activeWordArray.length) {
+                         activeDisplayWordArray.pop();
+                    
+                        }
 
                  
                 };
+
+                
             
-            document.getElementById("dBox").innerHTML = activeDisplayWord;
+            document.getElementById("dBox").innerHTML = activeDisplayWordString;
             
 
                
 
                 console.log (activeWordArray);
-                console.log (activeDisplayWord);
+                console.log (activeDisplayWordString);
 
 
         };
@@ -98,7 +109,7 @@
         // Onclick Functions
 
             document.onkeyup = function registerKey (){
-                keyPress = String.fromCharCode(event.which).toLowerCase();
+                keyPress = String.fromCharCode(event.which).toUpperCase();
                 wordCheck();
                 
                 
@@ -112,14 +123,25 @@
         //Array Check Functions
             function wordCheck () {
                 
-                for (i = 0; i < activeWordArray.length; i++);
-                
-                    keyCheck = activeWordArray[i];
-                    console.log (keyCheck);
+                for (i = 0; i < activeWordArray.length; i++){
+                    if (keyPress === activeWordArray[i]) {
+                        activeDisplayWordArray[i] = keyPress;
+                        activeDisplayWordString = activeDisplayWordArray.toString;
+                        activeDisplayWordString= activeDisplayWordString.replace (","," ");
+                        
+                    }
 
+                   
+                };
+                console.log(activeDisplayWordArray);
+
+                // document.getElementById("dBox").innerHTML = activeDisplayWordString;
+
+
+                
                     // if (keyPress === keyCheck) {
 
-                    // }
+                    // str+=testarray[i]+"%";
 
             }
     
