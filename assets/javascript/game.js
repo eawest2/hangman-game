@@ -108,14 +108,15 @@ function wordCompute () {
             //Display new workingWord in HTML
                     document.getElementById("dBox").innerHTML = workingWord;                                
             };
+
+            console.log("Workingwordarray: " + workingWordArrayVerify.toString().replace(/,/g," "))
+            console.log("Workingword "+workingWordArray.toString().replace(/,/g," "))
         };    
         //compare workingWordArray to workingWordArrayVerif
-        if (workingWordArray === workingWordArrayVerify) {
+        if (workingWordArray.toString().replace(/,/g," ") === workingWordArrayVerify.toString().replace(/,/g," ")) {
             //If they are the same, add one to guesses.
             guessNum++
             guessState--
-            console.log(guessNum);
-            console.log(guessState);
             //Show remaining guesses in html
             document.getElementById("guessNum").innerHTML = guessState;
             //run loss function
@@ -123,17 +124,17 @@ function wordCompute () {
             //Update workingWordArrayVerif
             workingWordArrayVerify = [];
             workingWordArrayVerify.push(workingWordArray)
-        }
             //Concatinate imageUpdate string
             imgUpdate = "assets/images/placeholder"+guessNum+".png";
             //show imageUpdate string in HTML
-            document.getElementById("imgNum").src = imgUpdate;         
+            document.getElementById("imgNum").src = imgUpdate;
+        }         
         //Add user input to guessArray
         guessArray.push(keyPress);
         //Display guessArray in html
         document.getElementById("guessBox").innerHTML = guessArray.toString().replace(/,/g," ");
         //Determine if a win has occured
-        if(workingWordArray === selectedWordArray){
+        if(workingWordArray.toString() === selectedWordArray.toString()){
             win();
         };
     };
